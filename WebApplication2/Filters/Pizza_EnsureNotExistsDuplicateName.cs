@@ -22,7 +22,11 @@ namespace WebApplication2.Filters
                     if(pizza.name == pizza1.name)
                     {
                         context.ModelState.AddModelError("name", "This Pizza Name already exists!");
-                        context.Result = new BadRequestObjectResult(context.ModelState);
+                        var problemDetails = new ValidationProblemDetails(context.ModelState)
+                        {
+                            Status = StatusCodes.Status400BadRequest,
+                        };
+                        context.Result = new BadRequestObjectResult(problemDetails);
                     }
                 }
             }
