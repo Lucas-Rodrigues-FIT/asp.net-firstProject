@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication2.Models;
 using WebApplication2.Services;
-
+using WebApplication2.Filters;
 
 namespace WebApplication2.Controllers
 {
@@ -38,6 +38,7 @@ namespace WebApplication2.Controllers
 
         //create a new pizza
         [HttpPost]
+        [Pizza_EnsureNotExistsDuplicateName]
         public IActionResult add(Pizza pizza)
         {
             PizzaService.add(pizza);

@@ -1,7 +1,7 @@
 
 
 # Learning ASP.NET
-A WEB API example developed using <a href="https://asp.net">asp.net</a>. It's use the concept of Routing, Model Binding and Model Validation.
+A WEB API example developed using <a href="https://asp.net">asp.net</a>. It's use the concept of Routing, Model Binding, Model Validation and Filter Pipeline.
 
 ## :pizza: Pizza API 
 
