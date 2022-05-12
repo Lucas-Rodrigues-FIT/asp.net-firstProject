@@ -1,7 +1,9 @@
 
 
-# PIZZA API - Learning ASP.NET
-A RESTful API example developed using <a href="https://asp.net">asp.net</a>.
+# Learning ASP.NET
+A WEB API example developed using <a href="https://asp.net">asp.net</a>. It's use the concept of Routing, Model Binding and Model Validation.
+
+## :pizza: Pizza API 
 
 ### - get All
 localhost:8080/api/pizzas
