@@ -13,4 +13,6 @@ public class Pizza
     [Required]
     public bool isGlutenFree { get; set; }
 
+    [Required]
+    public double price { get; set; }
 }
