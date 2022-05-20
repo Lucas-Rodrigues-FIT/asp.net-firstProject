@@ -11,8 +11,8 @@ public class Pizza
     public string? name { get; set; }
 
     [Required]
-    public bool isGlutenFree { get; set; }
+    public bool? isGlutenFree { get; set; }
 
     [Required]
-    public double price { get; set; }
+    public double? price { get; set; }
 }

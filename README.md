@@ -17,7 +17,7 @@ localhost:8080/api/pizzas <br>
 <code>{
 	"name" : "The Pizza name",
 	"isGlutenFree" : false,
-	"price": 29.99
+	"price" : 29.99
 }</code>
 
 ### - put
@@ -26,7 +26,7 @@ localhost:8080/api/pizzas/{id} <br>
 <code>{
 	"name" : "New Pizza name",
 	"isGlutenFree" : false,
-	"price": 29.99
+	"price" : 29.99
 }</code>
 
 ### - delete

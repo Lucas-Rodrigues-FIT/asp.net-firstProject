@@ -68,9 +68,12 @@ namespace WebApplication2.Controllers
             if (db.pizzas.Find(id) == null)
                 return NotFound();
             Pizza newPizza = db.pizzas.Find(id);
-            newPizza.name = pizza.name;
-            newPizza.isGlutenFree = pizza.isGlutenFree;
-            newPizza.price = pizza.price;
+            if (pizza.name != null)
+                newPizza.name = pizza.name;
+            if (pizza.isGlutenFree != null)
+                newPizza.isGlutenFree = pizza.isGlutenFree;
+            if(pizza.price != null)
+                newPizza.price = pizza.price;
 
             db.pizzas.Update(newPizza);
             db.SaveChanges();

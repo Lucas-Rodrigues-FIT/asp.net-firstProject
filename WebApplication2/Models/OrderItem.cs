@@ -15,7 +15,7 @@ public class OrderItem
     public double SubTotalPrice()
     {
         if(pizza != null)
-            return (pizza.price * quantity);
+            return ((double)(pizza.price * quantity));
         return 0.0;
     }
 }
