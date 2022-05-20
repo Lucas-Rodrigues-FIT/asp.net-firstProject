@@ -2,6 +2,7 @@
 using WebApplication2.Models;
 using WebApplication2.Services;
 using WebApplication2.Filters;
+using WebApplication2.DataStore;
 
 namespace WebApplication2.Controllers
 {
@@ -15,25 +16,27 @@ namespace WebApplication2.Controllers
         //    return View();
         //}
 
-        public PizzaController()
-        {
+        private readonly DataContext db;
 
+        public PizzaController(DataContext db)
+        {
+            this.db = db;
         }
 
         //get all pizzas
         [HttpGet]
         public ActionResult<List<Pizza>> getAll()
         {
-            return Ok(PizzaService.getAll());
+            return Ok(db.pizzas.ToList());
         }
 
         //get pizza by id
         [HttpGet("{id}")]
         public ActionResult<Pizza> getById(int id)
         {
-            if (PizzaService.getById(id) == null)
+            if (db.pizzas.Find(id) == null)
                 return NotFound();
-            return Ok(PizzaService.getById(id));
+            return Ok(db.pizzas.Find(id));
         }
 
         //create a new pizza
@@ -41,7 +44,9 @@ namespace WebApplication2.Controllers
         [Pizza_EnsureNotExistsDuplicateName]
         public IActionResult add(Pizza pizza)
         {
-            PizzaService.add(pizza);
+            pizza.id = db.pizzas.ToList().Count + 1;
+            db.pizzas.Add(pizza);
+            db.SaveChanges();
             return CreatedAtAction(nameof(add), new {id = pizza.id}, pizza);
         }
 
@@ -49,19 +54,28 @@ namespace WebApplication2.Controllers
         [HttpDelete("{id}")]
         public IActionResult delete(int id)
         {
-            if(PizzaService.delete(id) == -1)
+            if(db.pizzas.Find(id) == null)
                 return NotFound();
-            else
-                return NoContent();
+            db.pizzas.Remove(db.pizzas.Find(id));
+            db.SaveChanges();
+            return NoContent();
         }
 
+        //update 
         [HttpPut("{id}")]
         public IActionResult update([FromRoute] int id, [FromBody] Pizza pizza)
         {
-            if (PizzaService.update(id,pizza) == -1)
+            if (db.pizzas.Find(id) == null)
                 return NotFound();
-            else
-                return NoContent();
+            Pizza newPizza = db.pizzas.Find(id);
+            newPizza.name = pizza.name;
+            newPizza.isGlutenFree = pizza.isGlutenFree;
+            newPizza.price = pizza.price;
+
+            db.pizzas.Update(newPizza);
+            db.SaveChanges();
+            return NoContent();
+            
         }
 
     }

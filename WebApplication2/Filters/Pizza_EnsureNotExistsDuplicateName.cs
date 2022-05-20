@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.EntityFrameworkCore;
+using WebApplication2.Controllers;
+using WebApplication2.DataStore;
 using WebApplication2.Models;
 using WebApplication2.Services;
 
@@ -12,8 +15,10 @@ namespace WebApplication2.Filters
         {
             base.OnActionExecuting(context);
 
+
             var pizza = context.ActionArguments["pizza"] as Pizza;
-            List<Pizza> pizzas = PizzaService.getAll();
+            //temporary
+            List<Pizza> pizzas = new List<Pizza>();
 
             if(pizza != null)
             {
