@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApplication2.Models;
-using WebApplication2.Services;
 
 namespace WebApplication2.DataStore
 {

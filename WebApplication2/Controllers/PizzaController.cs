@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication2.Models;
-using WebApplication2.Services;
-using WebApplication2.Filters;
 using WebApplication2.DataStore;
 
 namespace WebApplication2.Controllers
@@ -41,9 +39,15 @@ namespace WebApplication2.Controllers
 
         //create a new pizza
         [HttpPost]
-        [Pizza_EnsureNotExistsDuplicateName]
         public IActionResult add(Pizza pizza)
         {
+            foreach(var pizza1 in db.pizzas.ToList())
+            {
+                if(pizza.name == pizza1.name)
+                {
+                    return BadRequest("This Pizza Name is already exits");
+                }
+            }
             pizza.id = db.pizzas.ToList().Count + 1;
             db.pizzas.Add(pizza);
             db.SaveChanges();
@@ -68,6 +72,13 @@ namespace WebApplication2.Controllers
             if (db.pizzas.Find(id) == null)
                 return NotFound();
             Pizza newPizza = db.pizzas.Find(id);
+            foreach (var pizza1 in db.pizzas.ToList())
+            {
+                if (pizza.name == pizza1.name)
+                {
+                    return BadRequest("This Pizza Name is already exits");
+                }
+            }
             if (pizza.name != null)
                 newPizza.name = pizza.name;
             if (pizza.isGlutenFree != null)
