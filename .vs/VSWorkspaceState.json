@@ -4,9 +4,7 @@
     "\\WebApplication2",
     "\\WebApplication2\\Controllers",
     "\\WebApplication2\\DataStore",
-    "\\WebApplication2\\Filters",
-    "\\WebApplication2\\Models",
-    "\\WebApplication2\\Services"
+    "\\WebApplication2\\Models"
   ],
   "SelectedNode": "\\WebApplication2.sln",
   "PreviewInSolutionExplorer": false

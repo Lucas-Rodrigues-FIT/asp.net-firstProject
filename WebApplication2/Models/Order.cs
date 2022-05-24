@@ -4,9 +4,10 @@ namespace WebApplication2.Models
     public class Order
     {
         [Required]
-        public int Id { get; set; }
+        public int id { get; set; }
 
-        public List<OrderItem>? Items { get; } = new List<OrderItem>();
+        [Required]
+        public List<OrderItem>? Items { get; }
 
         public double TotalPrice()
         {

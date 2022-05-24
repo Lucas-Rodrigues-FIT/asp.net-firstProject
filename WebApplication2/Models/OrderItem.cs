@@ -12,6 +12,10 @@ public class OrderItem
     [Required]
     public int quantity { get; set; }
 
+    public int orderId { get; set; }
+
+    public Order order { get; set; }
+
     public double SubTotalPrice()
     {
         if(pizza != null)

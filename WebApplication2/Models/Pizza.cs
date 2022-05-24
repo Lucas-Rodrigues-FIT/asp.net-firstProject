@@ -15,4 +15,8 @@ public class Pizza
 
     [Required]
     public double? price { get; set; }
+
+    public int orderItemId { get; set; }
+
+    public OrderItem orderItem { get; set; }
 }
