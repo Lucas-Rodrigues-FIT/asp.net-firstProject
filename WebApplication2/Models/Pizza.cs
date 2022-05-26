@@ -18,5 +18,4 @@ public class Pizza
 
     public int orderItemId { get; set; }
 
-    public OrderItem orderItem { get; set; }
 }

@@ -6,7 +6,6 @@ public class OrderItem
     [Required]
     public int Id { get; set; }
 
-    [Required]
     public Pizza? pizza { get; set; }
 
     [Required]

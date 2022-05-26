@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Ax3o2DNns3V3I0XGRLFKA9lc9ehvZrNANJXcxQRC7yUDWYhm01J3R9OVWKCLycjiqUvteqU7bwmT9C/aqHOjDA==",
+  "dgSpecHash": "hP1xKoNILDkQmV/2PM/sEp8AfhwCO0RWw/gqxNEnip1BE9bskRf0I86ASvRXwDp08iJ8Xx9xpYiy70xKq7upXQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\saolucro\\Documents\\ws\\ws-dotnet\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\saolucro\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0\\microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
     "C:\\Users\\saolucro\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.5\\microsoft.entityframeworkcore.6.0.5.nupkg.sha512",
     "C:\\Users\\saolucro\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.5\\microsoft.entityframeworkcore.abstractions.6.0.5.nupkg.sha512",
     "C:\\Users\\saolucro\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.5\\microsoft.entityframeworkcore.analyzers.6.0.5.nupkg.sha512",

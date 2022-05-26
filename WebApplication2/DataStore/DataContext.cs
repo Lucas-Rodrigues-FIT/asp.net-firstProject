@@ -15,9 +15,9 @@ namespace WebApplication2.DataStore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Pizza>()
-                .HasOne(p => p.orderItem)
-                .WithOne(o => o.pizza);
+            //modelBuilder.Entity<Pizza>()
+            //    .HasOne(p => p.orderItem)
+            //    .WithOne(o => o.pizza);
 
 
             modelBuilder.Entity<Order>()

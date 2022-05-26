@@ -23,23 +23,23 @@ namespace WebApplication2.Controllers
 
         //get all pizzas
         [HttpGet]
-        public ActionResult<List<Pizza>> getAll()
+        public async Task<ActionResult<List<Pizza>>> getAll()
         {
             return Ok(db.pizzas.ToList());
         }
 
         //get pizza by id
         [HttpGet("{id}")]
-        public ActionResult<Pizza> getById(int id)
+        public async Task<ActionResult<Pizza>> getById(int id)
         {
-            if (db.pizzas.Find(id) == null)
+            if (await db.pizzas.FindAsync(id) == null)
                 return NotFound();
-            return Ok(db.pizzas.Find(id));
+            return Ok(await db.pizzas.FindAsync(id));
         }
 
         //create a new pizza
         [HttpPost]
-        public IActionResult add(Pizza pizza)
+        public async Task<IActionResult> add(Pizza pizza)
         {
             foreach(var pizza1 in db.pizzas.ToList())
             {
@@ -49,29 +49,29 @@ namespace WebApplication2.Controllers
                 }
             }
             pizza.id = db.pizzas.ToList().Count + 1;
-            db.pizzas.Add(pizza);
-            db.SaveChanges();
+            await db.pizzas.AddAsync(pizza);
+            await db.SaveChangesAsync();
             return CreatedAtAction(nameof(add), new {id = pizza.id}, pizza);
         }
 
         //delete a pizza by id
         [HttpDelete("{id}")]
-        public IActionResult delete(int id)
+        public async Task<IActionResult> delete(int id)
         {
-            if(db.pizzas.Find(id) == null)
+            if(await db.pizzas.FindAsync(id) == null)
                 return NotFound();
             db.pizzas.Remove(db.pizzas.Find(id));
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return NoContent();
         }
 
         //update 
         [HttpPut("{id}")]
-        public IActionResult update([FromRoute] int id, [FromBody] Pizza pizza)
+        public async Task<IActionResult> update([FromRoute] int id, [FromBody] Pizza pizza)
         {
             if (db.pizzas.Find(id) == null)
                 return NotFound();
-            Pizza newPizza = db.pizzas.Find(id);
+            Pizza newPizza = await db.pizzas.FindAsync(id);
             foreach (var pizza1 in db.pizzas.ToList())
             {
                 if (pizza.name == pizza1.name)
@@ -87,7 +87,7 @@ namespace WebApplication2.Controllers
                 newPizza.price = pizza.price;
 
             db.pizzas.Update(newPizza);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return NoContent();
             
         }
