@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication2.Models;
 using WebApplication2.DataStore;
+using WebApplication2.Filters.v2;
 
 namespace WebApplication2.Controllers
 {
-    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     [ApiController]
     [Route("api/pizzas")]
-    public class PizzaController : ControllerBase
+    public class PizzaControllerV2 : ControllerBase
     {
         //public IActionResult Index()
         //{
@@ -16,7 +17,7 @@ namespace WebApplication2.Controllers
 
         private readonly DataContext db;
 
-        public PizzaController(DataContext db)
+        public PizzaControllerV2(DataContext db)
         {
             this.db = db;
         }
@@ -39,6 +40,7 @@ namespace WebApplication2.Controllers
 
         //create a new pizza
         [HttpPost]
+        [Pizza_EnsurePizzaNotBeNamedPizza]
         public async Task<IActionResult> add(Pizza pizza)
         {
             foreach(var pizza1 in db.pizzas.ToList())
@@ -67,6 +69,7 @@ namespace WebApplication2.Controllers
 
         //update 
         [HttpPut("{id}")]
+        [Pizza_EnsurePizzaNotBeNamedPizza]
         public async Task<IActionResult> update([FromRoute] int id, [FromBody] Pizza pizza)
         {
             if (db.pizzas.Find(id) == null)

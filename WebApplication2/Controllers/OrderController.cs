@@ -4,7 +4,7 @@ using WebApplication2.DataStore;
 
 namespace WebApplication2.Controllers
 {
-
+    [ApiVersion("1.0")]
     [ApiController]
     [Route("api/orders")]
     public class OrderController : ControllerBase

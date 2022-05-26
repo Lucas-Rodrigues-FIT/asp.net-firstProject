@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.DataStore;
 
@@ -11,6 +12,13 @@ builder.Services.AddDbContext<DataContext>(op =>
 });
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddApiVersioning( op =>
+{
+    op.ReportApiVersions = true;
+    op.AssumeDefaultVersionWhenUnspecified = true;
+    op.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+    op.ApiVersionReader = new HeaderApiVersionReader("X-API-Version");
+});
 
 
 var app = builder.Build();

@@ -18,4 +18,9 @@ public class Pizza
 
     public int orderItemId { get; set; }
 
+
+    public bool isNamedPizza()
+    {
+        return this.name.Contains("Pizza");
+    }
 }

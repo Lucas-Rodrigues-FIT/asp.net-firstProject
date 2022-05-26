@@ -28,9 +28,9 @@ namespace WebApplication2.DataStore
 
             //seeding
             modelBuilder.Entity<Pizza>().HasData(
-                new Pizza { id = 1, name = "Pizza Bacon", isGlutenFree = false, price = 33.39, orderItemId = 1 },
-                new Pizza { id = 2, name = "Pizza 3 queijos", isGlutenFree = false, price = 32.39, orderItemId = 2 },
-                new Pizza { id = 3, name = "Pizza Italiana", isGlutenFree = false, price = 13.39 }
+                new Pizza { id = 1, name = "Bacon", isGlutenFree = false, price = 33.39, orderItemId = 1 },
+                new Pizza { id = 2, name = "3 queijos", isGlutenFree = false, price = 32.39, orderItemId = 2 },
+                new Pizza { id = 3, name = "Italiana", isGlutenFree = false, price = 13.39 }
                 );
             modelBuilder.Entity<OrderItem>().HasData(
                 new OrderItem { Id = 1, quantity = 1, orderId = 1 },
