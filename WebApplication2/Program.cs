@@ -20,6 +20,13 @@ builder.Services.AddApiVersioning( op =>
     op.ApiVersionReader = new HeaderApiVersionReader("X-API-Version");
 });
 
+builder.Services.AddVersionedApiExplorer(op => op.GroupNameFormat = "'v'VVV");
+
+builder.Services.AddSwaggerGen( op =>
+{
+    op.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Web API v1", Version = "v1" });
+    op.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Web API v2", Version = "v2" });
+});
 
 var app = builder.Build();
 
@@ -39,6 +46,14 @@ else
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
     }
+
+    //Setting OpenAPI
+    app.UseSwagger();
+    app.UseSwaggerUI(op =>
+    {
+        op.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1");
+        op.SwaggerEndpoint("/swagger/v2/swagger.json", "WebAPI v2");
+    });
 }
 
 app.UseStaticFiles();

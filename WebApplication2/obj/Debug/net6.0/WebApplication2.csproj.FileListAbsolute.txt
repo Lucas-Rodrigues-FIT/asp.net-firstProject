@@ -31,3 +31,8 @@ C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplication2\obj\Deb
 C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplication2\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplication2\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplication2\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplication2\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplication2\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplication2\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplication2\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
