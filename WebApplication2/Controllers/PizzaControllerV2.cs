@@ -2,6 +2,7 @@
 using WebApplication2.Models;
 using WebApplication2.DataStore;
 using WebApplication2.Filters.v2;
+using WebApplication2.QueryFilters;
 
 namespace WebApplication2.Controllers
 {
@@ -24,9 +25,24 @@ namespace WebApplication2.Controllers
 
         //get all pizzas
         [HttpGet]
-        public async Task<ActionResult<List<Pizza>>> getAll()
+        public ActionResult getAll([FromQuery] PizzaQueryFilter pizzaQuery)
         {
-            return Ok(db.pizzas.ToList());
+            IQueryable<Pizza> pizzas = db.pizzas;
+
+            if (pizzaQuery != null)
+            {
+                if (pizzaQuery.id.HasValue) 
+                    pizzas = pizzas.Where(x => x.id == pizzaQuery.id);
+
+                if (!String.IsNullOrEmpty(pizzaQuery.name))
+                    pizzas = pizzas.Where(x => x.name.Contains(pizzaQuery.name,
+                        StringComparison.OrdinalIgnoreCase));
+
+                if (pizzaQuery.isGlutenFree != null)
+                    pizzas = pizzas.Where(x => x.isGlutenFree == pizzaQuery.isGlutenFree);
+            }
+
+            return Ok(pizzas.ToList());
         }
 
         //get pizza by id
