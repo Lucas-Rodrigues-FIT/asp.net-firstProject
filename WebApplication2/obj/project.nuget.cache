@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "w5ZOKVXrg4y04UMu+/ya2SdBS0yDKLK/Oz1+LkR4JGn/3MJrmxY4B+dzFRQNrqsVctu4x6877ZcIL2dCxTSjvw==",
+  "dgSpecHash": "jLlMitcp6DsDAHCz2N5kh7peo4mE9DjT7iTPoxNt7Lgul9QCGvU+TYbpAFKW6Bq+qup1oH93Ogntw4gwBMDQLA==",
   "success": true,
   "projectFilePath": "C:\\Users\\saolucro\\Documents\\ws\\ws-dotnet\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
   "expectedPackageFiles": [
@@ -26,7 +26,10 @@
     "C:\\Users\\saolucro\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.3.1\\swashbuckle.aspnetcore.swaggerui.6.3.1.nupkg.sha512",
     "C:\\Users\\saolucro\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\saolucro\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
-    "C:\\Users\\saolucro\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\saolucro\\.nuget\\packages\\system.net.http.json\\6.0.0\\system.net.http.json.6.0.0.nupkg.sha512",
+    "C:\\Users\\saolucro\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\saolucro\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
+    "C:\\Users\\saolucro\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }
