@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.DataStore;
@@ -11,6 +12,8 @@ builder.Services.AddDbContext<DataContext>(op =>
     op.UseInMemoryDatabase("PizzaOrders");
 });
 builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApiVersioning( op =>
 {

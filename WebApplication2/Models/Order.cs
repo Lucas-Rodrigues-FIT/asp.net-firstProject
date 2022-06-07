@@ -5,20 +5,23 @@ namespace WebApplication2.Models
     {
         [Required]
         public int id { get; set; }
+        public double totalPrice
+        {
+            get
+            {
+                if (orderItems == null)
+                    return 0.0;
+                double totalPrice = 0.0;
+                foreach (var item in orderItems)
+                {
+                    totalPrice += item.subPrice;
+                }
+                return totalPrice;
+            }
+        }
 
         [Required]
-        public List<OrderItem>? Items { get; }
+        public List<OrderItem>? orderItems { get; } = new();
 
-        public double TotalPrice()
-        {
-            if(Items == null)
-                return 0.0;
-            double totalPrice = 0.0;
-            foreach (var item in Items)
-            {
-                totalPrice += item.SubTotalPrice();
-            }
-            return totalPrice;
-        }
     }
 }

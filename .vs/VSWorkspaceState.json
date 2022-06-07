@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\WebApplication2",
-    "\\WebApplication2\\Controllers",
-    "\\WebApplication2\\DataStore",
-    "\\WebApplication2\\Models"
+    "\\WebApp",
+    "\\WebApp\\Pages"
   ],
   "SelectedNode": "\\WebApplication2.sln",
   "PreviewInSolutionExplorer": false

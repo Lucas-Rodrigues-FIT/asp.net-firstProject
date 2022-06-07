@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication2.Models;
 using WebApplication2.DataStore;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication2.Controllers
 {
@@ -21,14 +22,17 @@ namespace WebApplication2.Controllers
             this.db = db;
         }
 
-        //get all pizzas
+        //get all order
         [HttpGet]
         public ActionResult<List<Order>> getAll()
         {
-            return Ok(db.orders.ToList());
+            return Ok(db.orders
+                .Include(item => item.orderItems)
+                .ThenInclude(pizza => pizza.pizza)
+                .ToList());
         }
 
-        //get pizza by id
+        //get order by id
         [HttpGet("{id}")]
         public ActionResult<Order> getById(int id)
         {
@@ -37,7 +41,7 @@ namespace WebApplication2.Controllers
             return Ok(db.orders.Find(id));
         }
 
-        //create a new pizza
+        //create a new order
         [HttpPost]
         public IActionResult add(Order order)
         {
@@ -47,7 +51,7 @@ namespace WebApplication2.Controllers
             return CreatedAtAction(nameof(add), new {id = order.id}, order);
         }
 
-        //delete a pizza by id
+        //delete a order by id
         [HttpDelete("{id}")]
         public IActionResult delete(int id)
         {
