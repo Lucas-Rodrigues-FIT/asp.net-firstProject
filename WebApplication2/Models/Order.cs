@@ -3,7 +3,6 @@ namespace WebApplication2.Models
 {
     public class Order
     {
-        [Required]
         public int id { get; set; }
         public double totalPrice
         {
@@ -20,8 +19,7 @@ namespace WebApplication2.Models
             }
         }
 
-        [Required]
-        public List<OrderItem>? orderItems { get; } = new();
+        public List<OrderItem>? orderItems { get; set; }
 
     }
 }

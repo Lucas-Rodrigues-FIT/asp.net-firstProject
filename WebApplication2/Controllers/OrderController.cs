@@ -46,36 +46,46 @@ namespace WebApplication2.Controllers
         public IActionResult add(Order order)
         {
             order.id = db.orders.ToList().Count + 1;
-            db.orders.Add(order);
+            
+            foreach (var item in order.orderItems)
+                item.orderId = order.id;
+
+            db.orders.Add(order);  
             db.SaveChanges();
+
+            foreach (var item in order.orderItems)
+            {
+                item.pizza = db.pizzas.Find(item.pizzaId);
+            }
+
             return CreatedAtAction(nameof(add), new {id = order.id}, order);
         }
 
-        //delete a order by id
-        [HttpDelete("{id}")]
-        public IActionResult delete(int id)
-        {
-            if(db.orders.Find(id) == null)
-                return NotFound();
-            db.orders.Remove(db.orders.Find(id));
-            db.SaveChanges();
-            return NoContent();
-        }
+        ////delete a order by id
+        //[HttpDelete("{id}")]
+        //public IActionResult delete(int id)
+        //{
+        //    if(db.orders.Find(id) == null)
+        //        return NotFound();
+        //    db.orders.Remove(db.orders.Find(id));
+        //    db.SaveChanges();
+        //    return NoContent();
+        //}
 
-        //update 
-        [HttpPut("{id}")]
-        public IActionResult update([FromRoute] int id, [FromBody] Order order)
-        {
-            if (db.orders.Find(id) == null)
-                return NotFound();
+        ////update 
+        //[HttpPut("{id}")]
+        //public IActionResult update([FromRoute] int id, [FromBody] Order order)
+        //{
+        //    if (db.orders.Find(id) == null)
+        //        return NotFound();
             
-            order.id = id;
+        //    order.id = id;
 
-            db.orders.Update(order);
-            db.SaveChanges();
-            return NoContent();
+        //    db.orders.Update(order);
+        //    db.SaveChanges();
+        //    return NoContent();
             
-        }
+        //}
 
     }
 }
