@@ -1,0 +1,12 @@
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\bin\Debug\net6.0\WebApplicationModels.deps.json
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\bin\Debug\net6.0\WebApplicationModels.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\bin\Debug\net6.0\WebApplicationModels.pdb
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\obj\Debug\net6.0\WebApplicationModels.csproj.AssemblyReference.cache
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\obj\Debug\net6.0\WebApplicationModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\obj\Debug\net6.0\WebApplicationModels.AssemblyInfoInputs.cache
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\obj\Debug\net6.0\WebApplicationModels.AssemblyInfo.cs
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\obj\Debug\net6.0\WebApplicationModels.csproj.CoreCompileInputs.cache
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\obj\Debug\net6.0\WebApplicationModels.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\obj\Debug\net6.0\refint\WebApplicationModels.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\obj\Debug\net6.0\WebApplicationModels.pdb
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\WebApplicationModels\obj\Debug\net6.0\ref\WebApplicationModels.dll

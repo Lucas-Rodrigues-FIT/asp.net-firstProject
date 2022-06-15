@@ -350,6 +350,16 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "WebApplicationModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/WebApplicationModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebApplicationModels.dll": {}
+        }
       }
     }
   },
@@ -958,6 +968,11 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "WebApplicationModels/1.0.0": {
+      "type": "project",
+      "path": "../WebApplicationModels/WebApplicationModels.csproj",
+      "msbuildProject": "../WebApplicationModels/WebApplicationModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -967,7 +982,8 @@
       "Microsoft.EntityFrameworkCore >= 6.0.5",
       "Microsoft.EntityFrameworkCore.InMemory >= 6.0.5",
       "Swashbuckle.AspNetCore >= 6.3.1",
-      "System.Net.Http.Json >= 6.0.0"
+      "System.Net.Http.Json >= 6.0.0",
+      "WebApplicationModels >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1001,7 +1017,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\saolucro\\Documents\\ws\\ws-dotnet\\WebApplication2\\WebApplicationModels\\WebApplicationModels.csproj": {
+              "projectPath": "C:\\Users\\saolucro\\Documents\\ws\\ws-dotnet\\WebApplication2\\WebApplicationModels\\WebApplicationModels.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -1057,7 +1077,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

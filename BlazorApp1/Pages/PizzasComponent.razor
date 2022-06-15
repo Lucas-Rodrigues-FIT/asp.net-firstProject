@@ -1,0 +1,28 @@
+﻿@page "/"
+
+@inject IPizzasScreenUseCases PizzasScreenUseCases
+
+<h3>Pizzas</h3>
+<br />
+@if (pizzas != null)
+{
+	<ul>
+		@foreach (var pizza in pizzas)
+		{
+			<li> <strong>Pizza#@pizza.id:</strong>
+				@pizza.name,
+				<strong>Is gluten free? </strong>@pizza.isGlutenFree, 
+				<strong>$@pizza.price</strong></li>
+		}
+	</ul>
+
+}
+
+@code {
+	IEnumerable<Pizza>? pizzas;
+
+	protected override async Task OnInitializedAsync()
+	{
+		pizzas = await PizzasScreenUseCases.ViewPizzas();
+	}
+}

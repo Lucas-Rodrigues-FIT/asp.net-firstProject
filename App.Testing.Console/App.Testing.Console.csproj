@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebApplication2\WebApplication2.csproj" />
+    <ProjectReference Include="..\Repositories\Repositories.csproj" />
+    <ProjectReference Include="..\WebApplicationModels\WebApplicationModels.csproj" />
   </ItemGroup>
 
 </Project>

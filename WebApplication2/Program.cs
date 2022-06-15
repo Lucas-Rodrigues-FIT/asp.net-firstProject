@@ -31,6 +31,16 @@ builder.Services.AddSwaggerGen( op =>
     op.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Web API v2", Version = "v2" });
 });
 
+builder.Services.AddCors(op =>
+{
+    op.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("https://localhost:44393")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -62,6 +72,8 @@ else
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseCors();
 
 app.UseAuthorization();
 

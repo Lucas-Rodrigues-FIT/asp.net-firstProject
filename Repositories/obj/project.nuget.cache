@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "eKFt7lrFrc4fcuB+IrigqqdVeiUHriGf83E1T5Gv9RXb8CgOL5GBr1dBPa4JNZ2VNAL3KbeMUmdipAmcdHjThQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\saolucro\\Documents\\ws\\ws-dotnet\\WebApplication2\\Repositories\\Repositories.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\saolucro\\.nuget\\packages\\system.net.http.json\\6.0.0\\system.net.http.json.6.0.0.nupkg.sha512",
+    "C:\\Users\\saolucro\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\saolucro\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
+    "C:\\Users\\saolucro\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

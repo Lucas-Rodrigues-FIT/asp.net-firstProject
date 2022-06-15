@@ -1,0 +1,17 @@
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\bin\Debug\net6.0\MyApp.ApplicationLogic.deps.json
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\bin\Debug\net6.0\MyApp.ApplicationLogic.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\bin\Debug\net6.0\MyApp.ApplicationLogic.pdb
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\obj\Debug\net6.0\MyApp.ApplicationLogic.csproj.AssemblyReference.cache
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\obj\Debug\net6.0\MyApp.ApplicationLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\obj\Debug\net6.0\MyApp.ApplicationLogic.AssemblyInfoInputs.cache
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\obj\Debug\net6.0\MyApp.ApplicationLogic.AssemblyInfo.cs
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\obj\Debug\net6.0\MyApp.ApplicationLogic.csproj.CoreCompileInputs.cache
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\obj\Debug\net6.0\MyApp.ApplicationLogic.csproj.CopyComplete
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\obj\Debug\net6.0\MyApp.ApplicationLogic.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\obj\Debug\net6.0\refint\MyApp.ApplicationLogic.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\obj\Debug\net6.0\MyApp.ApplicationLogic.pdb
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\obj\Debug\net6.0\ref\MyApp.ApplicationLogic.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\bin\Debug\net6.0\WebApplicationModels.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\bin\Debug\net6.0\WebApplicationModels.pdb
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\bin\Debug\net6.0\Repositories.dll
+C:\Users\saolucro\Documents\ws\ws-dotnet\WebApplication2\MyApp.ApplicationLogic\bin\Debug\net6.0\Repositories.pdb
