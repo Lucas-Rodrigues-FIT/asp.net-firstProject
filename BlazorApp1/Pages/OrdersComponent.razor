@@ -1,0 +1,29 @@
+﻿@page "/allorders"
+
+@inject IOrdersScreenUseCases OrdersScreenUseCases
+
+<h3>All Orders</h3>
+<br />
+@if (orders != null)
+{
+	<ul>
+		@foreach (var order in orders)
+		{
+			<li>
+				<NavLink href="@($"/allorders/{@order.id}")">
+					Order #@order.id
+				</NavLink>
+			</li>
+		}
+	</ul>
+
+}
+
+@code {
+	IEnumerable<Order>? orders;
+
+	protected override async Task OnInitializedAsync()
+	{
+		orders = await OrdersScreenUseCases.ViewOrders();
+	}
+}

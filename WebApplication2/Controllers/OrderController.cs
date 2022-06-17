@@ -38,7 +38,8 @@ namespace WebApplication2.Controllers
         {
             if (db.orders.Find(id) == null)
                 return NotFound();
-            return Ok(db.orders.Find(id));
+            return Ok(db.orders.Include(item => item.orderItems)
+                .ThenInclude(pizza => pizza.pizza).ToList().Find( order => order.id == id) );
         }
 
         //create a new order

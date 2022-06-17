@@ -1,0 +1,50 @@
+﻿@page "/allorders/{id:int}"
+
+@inject IOrdersScreenUseCases OrdersScreenUseCases
+
+<h3>Order #@(id)</h3>
+<br />
+@if (order != null)
+{
+	<ul>
+		@foreach (var item in order.orderItems)
+		{
+			<li>
+				<strong>Pizza:</strong> @item.pizza.name - <strong>Quantity: </strong> @item.quantity <br />
+				<strong>Sub Price: </strong> $@item.subPrice
+			</li>
+		}
+	</ul>
+	<strong>Total Price: </strong> @("$")
+
+	@order.totalPrice
+}
+else if (!isOrderExits)
+{
+	<span class="text-danger">THIS ORDER NOT EXITS!</span>
+}
+else
+{
+	<span>Loading...</span>
+}
+
+@code {
+	Order? order;
+
+	bool isOrderExits = true;
+
+	[Parameter]
+	public int id { get; set; }
+
+	protected override async Task OnParametersSetAsync()
+	{
+		try
+		{
+			order = await OrdersScreenUseCases.ViewOrderById(id);
+		} catch( Exception e)
+		{
+			order = null;
+			isOrderExits = false;
+		}
+	}
+}
