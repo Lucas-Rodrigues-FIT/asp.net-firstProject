@@ -5,17 +5,8 @@
 <h3>All Pizzas</h3>
 <br />
 @if (pizzas != null)
-{
-	<ul>
-		@foreach (var pizza in pizzas)
-		{
-			<li> <strong>Pizza#@pizza.id:</strong>
-				@pizza.name,
-				<strong>Is gluten free? </strong>@(@pizza.isGlutenFree == true ? "Yes" : "No"), 
-				<strong>$@pizza.price</strong></li>
-		}
-	</ul>
-
+{	
+	<PizzasShowComponent pizzas="pizzas"></PizzasShowComponent>
 }
 
 @code {

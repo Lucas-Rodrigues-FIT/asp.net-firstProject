@@ -1,0 +1,17 @@
+﻿
+<ul>
+	@foreach (var pizza in pizzas)
+	{
+		<li>
+			<strong>Pizza#@pizza.id:</strong>
+			@pizza.name,
+			<strong>Is gluten free? </strong>@(@pizza.isGlutenFree == true ? "Yes" : "No"),
+			<strong>$@pizza.price</strong>
+		</li>
+	}
+</ul>
+
+@code {
+	[Parameter]
+	public IEnumerable<Pizza> pizzas { get; set; }
+}

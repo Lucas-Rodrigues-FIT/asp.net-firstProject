@@ -16,5 +16,10 @@ namespace MyApp.ApplicationLogic
         {
             return await pizzaRepository.get();
         }
+
+        public async Task<IEnumerable<Pizza>> SearchPizzas(String filter)
+        {
+            return await pizzaRepository.search(filter);
+        }
     }
 }

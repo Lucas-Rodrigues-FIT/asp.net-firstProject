@@ -1,0 +1,36 @@
+﻿@page "/allpizzassearch"
+
+@inject IPizzasScreenUseCases PizzasScreenUseCases
+
+<h3>Pizzas Search</h3>
+<br />
+<div class="row">
+	<div class="col-auto">
+		<input type="text" class="form-control" @bind-value="searchFilter" />
+	</div>
+	<div class="col-auto">
+		<button type="button" class="btn btn-primary" @onclick="searchPizzas">SEARCH</button>
+	</div>
+</div>
+<br />
+
+@if (pizzas != null)
+{
+	<PizzasShowComponent pizzas="pizzas"></PizzasShowComponent>
+}
+
+@code {
+	
+	IEnumerable<Pizza> pizzas;
+	string searchFilter;
+
+	protected override async Task OnParametersSetAsync()
+	{
+		pizzas = await PizzasScreenUseCases.ViewPizzas();
+	}
+
+	private async Task searchPizzas()
+	{
+		pizzas = await PizzasScreenUseCases.SearchPizzas(searchFilter);
+	}
+}

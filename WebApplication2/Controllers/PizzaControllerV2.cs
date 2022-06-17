@@ -31,15 +31,9 @@ namespace WebApplication2.Controllers
 
             if (pizzaQuery != null)
             {
-                if (pizzaQuery.id.HasValue) 
-                    pizzas = pizzas.Where(x => x.id == pizzaQuery.id);
-
                 if (!String.IsNullOrEmpty(pizzaQuery.name))
                     pizzas = pizzas.Where(x => x.name.Contains(pizzaQuery.name,
                         StringComparison.OrdinalIgnoreCase));
-
-                if (pizzaQuery.isGlutenFree != null)
-                    pizzas = pizzas.Where(x => x.isGlutenFree == pizzaQuery.isGlutenFree);
             }
 
             return Ok(pizzas.ToList());
@@ -59,9 +53,9 @@ namespace WebApplication2.Controllers
         [Pizza_EnsurePizzaNotBeNamedPizza]
         public async Task<IActionResult> add(Pizza pizza)
         {
-            foreach(var pizza1 in db.pizzas.ToList())
+            foreach (var pizza1 in db.pizzas.ToList())
             {
-                if(pizza.name == pizza1.name)
+                if (pizza.name == pizza1.name)
                 {
                     return BadRequest("This Pizza Name is already exits");
                 }
@@ -69,14 +63,14 @@ namespace WebApplication2.Controllers
             pizza.id = db.pizzas.ToList().Count + 1;
             await db.pizzas.AddAsync(pizza);
             await db.SaveChangesAsync();
-            return CreatedAtAction(nameof(add), new {id = pizza.id}, pizza);
+            return CreatedAtAction(nameof(add), new { id = pizza.id }, pizza);
         }
 
         //delete a pizza by id
         [HttpDelete("{id}")]
         public async Task<IActionResult> delete(int id)
         {
-            if(await db.pizzas.FindAsync(id) == null)
+            if (await db.pizzas.FindAsync(id) == null)
                 return NotFound();
             db.pizzas.Remove(db.pizzas.Find(id));
             await db.SaveChangesAsync();
@@ -102,13 +96,13 @@ namespace WebApplication2.Controllers
                 newPizza.name = pizza.name;
             if (pizza.isGlutenFree != null)
                 newPizza.isGlutenFree = pizza.isGlutenFree;
-            if(pizza.price != null)
+            if (pizza.price != null)
                 newPizza.price = pizza.price;
 
             db.pizzas.Update(newPizza);
             await db.SaveChangesAsync();
             return NoContent();
-            
+
         }
 
     }

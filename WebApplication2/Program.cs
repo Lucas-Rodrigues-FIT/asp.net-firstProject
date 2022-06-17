@@ -20,7 +20,7 @@ builder.Services.AddApiVersioning( op =>
     op.ReportApiVersions = true;
     op.AssumeDefaultVersionWhenUnspecified = true;
     op.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
-    op.ApiVersionReader = new HeaderApiVersionReader("X-API-Version");
+    //op.ApiVersionReader = new HeaderApiVersionReader("X-API-Version");
 });
 
 builder.Services.AddVersionedApiExplorer(op => op.GroupNameFormat = "'v'VVV");

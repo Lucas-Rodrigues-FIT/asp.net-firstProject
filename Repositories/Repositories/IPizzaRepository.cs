@@ -7,7 +7,8 @@ namespace WebApplication2.Repositories
         Task<int> Create(Pizza pizza);
         Task Delete(int id);
         Task<IEnumerable<Pizza>> get();
-        Task<IEnumerable<Pizza>> getById(int id);
+        Task<Pizza> getById(int id);
         Task Update(Pizza pizza);
+        Task<IEnumerable<Pizza>> search(String filter);
     }
 }
