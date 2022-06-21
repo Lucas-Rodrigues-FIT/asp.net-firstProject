@@ -19,7 +19,7 @@ namespace WebApplication2.Models
             }
         }
 
-        public List<OrderItem>? orderItems { get; set; }
+        public List<OrderItem> orderItems { get; set; }
 
     }
 }

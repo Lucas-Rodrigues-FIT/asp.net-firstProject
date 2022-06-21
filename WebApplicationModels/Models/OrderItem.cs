@@ -18,7 +18,7 @@ public class OrderItem
     }
 
     public Pizza? pizza { get; set; }
-    public int pizzaId { get; set; }
+    public int? pizzaId { get; set; }
 
     [JsonIgnore]
     public Order? order { get; set; }

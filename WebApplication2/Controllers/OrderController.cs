@@ -24,69 +24,115 @@ namespace WebApplication2.Controllers
 
         //get all order
         [HttpGet]
-        public ActionResult<List<Order>> getAll()
+        public async Task<ActionResult<List<Order>>> getAll()
         {
-            return Ok(db.orders
+            return Ok(await db.orders
                 .Include(item => item.orderItems)
                 .ThenInclude(pizza => pizza.pizza)
-                .ToList());
+                .ToListAsync());
+        }
+
+        //get all orderItems
+        [HttpGet("items")]
+        public async Task<ActionResult<List<Order>>> getAllItems()
+        {
+            return Ok(await db.orderItems.ToListAsync() );
         }
 
         //get order by id
         [HttpGet("{id}")]
-        public ActionResult<Order> getById(int id)
+        public async Task<ActionResult<Order>> getById(int id)
         {
-            if (db.orders.Find(id) == null)
+            if (await db.orders.FindAsync(id) == null)
                 return NotFound();
             return Ok(db.orders.Include(item => item.orderItems)
-                .ThenInclude(pizza => pizza.pizza).ToList().Find( order => order.id == id) );
+                .ThenInclude(pizza => pizza.pizza).ToList()
+                .Find( order => order.id == id) );
         }
 
         //create a new order
         [HttpPost]
-        public IActionResult add(Order order)
+        public async Task<IActionResult> add(Order order)
         {
+            foreach (var item in order.orderItems)
+            {
+                if (await db.pizzas.FindAsync(item.pizzaId) == null)
+                    return BadRequest("This pizza or these pizzas not exist");
+            }
+
+            order.orderItems = order.orderItems.Where(item => item.quantity > 0).ToList();
+
             order.id = db.orders.ToList().Count + 1;
             
             foreach (var item in order.orderItems)
                 item.orderId = order.id;
 
-            db.orders.Add(order);  
-            db.SaveChanges();
+            await db.orders.AddAsync(order);  
+            await db.SaveChangesAsync();
 
             foreach (var item in order.orderItems)
             {
-                item.pizza = db.pizzas.Find(item.pizzaId);
+                item.pizza = await db.pizzas.FindAsync(item.pizzaId);
             }
 
             return CreatedAtAction(nameof(add), new {id = order.id}, order);
         }
 
-        ////delete a order by id
-        //[HttpDelete("{id}")]
-        //public IActionResult delete(int id)
-        //{
-        //    if(db.orders.Find(id) == null)
-        //        return NotFound();
-        //    db.orders.Remove(db.orders.Find(id));
-        //    db.SaveChanges();
-        //    return NoContent();
-        //}
+        //delete a order by id
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> delete(int id)
+        {
+            if (db.orders.Find(id) == null)
+                return NotFound();
 
-        ////update 
-        //[HttpPut("{id}")]
-        //public IActionResult update([FromRoute] int id, [FromBody] Order order)
-        //{
-        //    if (db.orders.Find(id) == null)
-        //        return NotFound();
-            
-        //    order.id = id;
+            foreach (var item in db.orders.Include(item => item.orderItems)
+                .ThenInclude(pizza => pizza.pizza).ToList()
+                .Find(order => order.id == id).orderItems)
+            {
+                item.orderId = null;
+                db.pizzas.Find(item.pizzaId).orderItems.Remove(item);
+                item.pizzaId = null;
+                db.orderItems.Remove(db.orderItems.Find(item.Id));
+            }
+            await db.SaveChangesAsync();
 
-        //    db.orders.Update(order);
-        //    db.SaveChanges();
-        //    return NoContent();
-            
-        //}
+            db.orders.Remove(await db.orders.FindAsync(id));
+            await db.SaveChangesAsync();
+            return NoContent();
+        }
+
+        //update 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> update([FromRoute] int id, [FromBody] Order order)
+        {
+            if (await db.orders.FindAsync(id) == null)
+                return NotFound();
+            Order newOrder = db.orders.Include(item => item.orderItems)
+                .ThenInclude(pizza => pizza.pizza).ToList()
+                .Find(order => order.id == id);
+
+            foreach (var item in order.orderItems)
+            {
+                if (db.pizzas.Find(item.pizzaId) == null)
+                    return BadRequest("This pizza or these pizzas not exist");
+            }
+
+            foreach (var item in newOrder.orderItems)
+            {
+                item.orderId = null;
+                db.pizzas.Find(item.pizzaId).orderItems.Remove(item);
+                item.pizzaId = null;
+                db.orderItems.Remove(db.orderItems.Find(item.Id));
+            }
+            await db.SaveChangesAsync();
+
+            newOrder.orderItems = order.orderItems.Where(item => item.quantity > 0).ToList();
+
+            db.orders.Update(newOrder);
+            await db.SaveChangesAsync();
+            return NoContent();
+
+        }
 
     }
 }

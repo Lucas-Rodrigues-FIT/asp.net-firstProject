@@ -11,7 +11,7 @@ public class Pizza
     public double? price { get; set; }
 
     [JsonIgnore]
-    public List<OrderItem>? orderItem { get; set; }
+    public List<OrderItem>? orderItems { get; set; }
 
 
     public bool isNamedPizza()

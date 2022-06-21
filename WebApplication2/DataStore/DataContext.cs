@@ -20,7 +20,7 @@ namespace WebApplication2.DataStore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pizza>()
-                .HasMany(p => p.orderItem)
+                .HasMany(p => p.orderItems)
                 .WithOne(o => o.pizza)
                 .HasForeignKey(k => k.pizzaId);
 
@@ -33,14 +33,17 @@ namespace WebApplication2.DataStore
             modelBuilder.Entity<Pizza>().HasData(
                 new Pizza { id = 1, name = "Bacon", isGlutenFree = false, price = 33.39 },
                 new Pizza { id = 2, name = "3 queijos", isGlutenFree = false, price = 32.39},
-                new Pizza { id = 3, name = "Italiana", isGlutenFree = true, price = 13.39 }
+                new Pizza { id = 3, name = "Italiana", isGlutenFree = true, price = 13.49 },
+                new Pizza { id = 4, name = "Bauru", isGlutenFree = false, price = 21.99 }
                 );
             modelBuilder.Entity<OrderItem>().HasData(
                 new OrderItem { Id = 1, quantity = 1, orderId = 1, pizzaId = 1 },
-                new OrderItem { Id = 2, quantity = 2, orderId = 1, pizzaId = 2 }
+                new OrderItem { Id = 2, quantity = 2, orderId = 1, pizzaId = 2 },
+                new OrderItem { Id = 3, quantity = 1, orderId = 2, pizzaId = 4 }
                 );
             modelBuilder.Entity<Order>().HasData(
-                new Order { id = 1 }
+                new Order { id = 1 },
+                new Order { id = 2 }
                 );
         }
 
