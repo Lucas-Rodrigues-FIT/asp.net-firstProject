@@ -57,7 +57,7 @@ namespace WebApplication2.Controllers
             foreach (var item in order.orderItems)
             {
                 if (await db.pizzas.FindAsync(item.pizzaId) == null)
-                    return BadRequest("This pizza or these pizzas not exist");
+                    return BadRequest("This pizza or these pizzas not exist.");
             }
 
             order.orderItems = order.orderItems.Where(item => item.quantity > 0).ToList();
@@ -114,7 +114,7 @@ namespace WebApplication2.Controllers
             foreach (var item in order.orderItems)
             {
                 if (db.pizzas.Find(item.pizzaId) == null)
-                    return BadRequest("This pizza or these pizzas not exist");
+                    return BadRequest("This pizza or these pizzas not exist.");
             }
 
             foreach (var item in newOrder.orderItems)

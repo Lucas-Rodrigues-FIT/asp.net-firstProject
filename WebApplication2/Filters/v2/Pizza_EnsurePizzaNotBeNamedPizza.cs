@@ -14,7 +14,7 @@ namespace WebApplication2.Filters.v2
 
             if(pizza != null && pizza.isNamedPizza())
             {
-                context.ModelState.AddModelError("name", "The pizza can't be named pizza");
+                context.ModelState.AddModelError("name", "The pizza can't contains 'pizza' in the name.");
                 context.Result = new BadRequestObjectResult(context.ModelState);
             }
         }

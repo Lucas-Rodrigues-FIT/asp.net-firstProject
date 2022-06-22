@@ -1,15 +1,16 @@
 ﻿
-<ul>
-	@foreach (var pizza in pizzas)
-	{
-		<li>
-			<strong>Pizza#@pizza.id:</strong>
-			@pizza.name,
-			<strong>Is gluten free? </strong>@(@pizza.isGlutenFree == true ? "Yes" : "No"),
-			<strong>$@pizza.price</strong>
-		</li>
-	}
-</ul>
+@foreach (var pizza in pizzas)
+{
+	<div class="card m-1 border-primary" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title text-primary"><strong>@pizza.name</strong></h5>
+			<h6 class="card-subtitle mb-2 text-muted"><strong>pizza#@pizza.id</strong></h6>
+			<p class="card-text"><strong>Is gluten free? </strong>@(@pizza.isGlutenFree == true ? "Yes" : "No") </p>
+			<p class="card-text"><strong>Price:</strong> $@pizza.price</p>
+			<a href=@($"/pizzas/{@pizza.id}") class="btn btn-primary">Open</a>
+		</div>
+	</div>
+}
 
 @code {
 	[Parameter]

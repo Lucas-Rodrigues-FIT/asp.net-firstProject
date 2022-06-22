@@ -1,0 +1,84 @@
+﻿@page "/pizzacreate"
+
+@inject IPizzasScreenUseCases PizzasScreenUseCases
+@inject NavigationManager NavigationManager
+
+<h3 class="text-primary text-center">Pizza Create</h3>
+<br />
+
+<div style=" display: flex; justify-content:center;">
+
+	<div class="card text-center" style="width: 50vw;">
+		<div class="card-header text-primary">
+			New Pizza
+		</div>
+		<div class="card-body">
+			<EditForm Model="pizza" OnValidSubmit="Save">
+
+				<div class="mb-3">
+					<label for="name" class="form-label"><strong>Name</strong></label>
+					<InputText class="form-control text-center" id="name" @bind-Value="pizza.name"></InputText>
+				</div>
+				<AlertComponent @ref="alertComponent"></AlertComponent>
+
+				<div class="mb-3">
+					<label for="isGlutenFree" class="form-label"><strong>Is gluten free?</strong></label>
+					<InputSelect class="form-control text-center" id="isGlutenFree" @bind-Value="pizza.isGlutenFree">
+						<option value="true">Yes</option>
+						<option value="false">No</option>
+					</InputSelect>
+				</div>
+				<div class="mb-3">
+					<label for="price" class="form-label"><strong>Price</strong></label>
+					<InputNumber class="form-control text-center" id="price" @bind-Value="pizza.price"></InputNumber>
+				</div>
+
+
+				<button class="btn btn-success" type="submit">Save</button>
+			</EditForm>
+		</div>
+	</div>
+</div>
+
+
+<br />
+
+
+@code {
+
+	Pizza pizza;
+	AlertComponent alertComponent;
+
+	protected override async Task OnParametersSetAsync()
+	{
+		pizza = new Pizza();
+	}
+
+	async Task Save()
+	{
+		bool bSuccess = true;
+
+        if (!pizza.validateName())
+        {
+            alertComponent.ErrorMessage = "Name is required";
+            alertComponent.Show();
+            bSuccess = false;
+        }
+
+		if (bSuccess)
+        {
+			try
+			{
+				int id = await PizzasScreenUseCases.addPizza(pizza);
+				NavigationManager.NavigateTo($"/pizzas/{id}");
+			}
+			catch (Exception e)
+			{
+				alertComponent.ErrorMessage = e.Message.Trim('\"');
+				alertComponent.Show();
+				bSuccess = false;
+			}
+        }
+	}
+
+}

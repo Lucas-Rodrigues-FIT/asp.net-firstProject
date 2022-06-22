@@ -1,0 +1,42 @@
+﻿@inject IPizzasScreenUseCases PizzasScreenUseCases
+@inject NavigationManager NavigationManager
+
+<div style="display: flex; flex-direction:row; flex-wrap:wrap; justify-content:center">
+
+	<div class="card m-1 border-primary text-center" style="width: 50vw;">
+		<div class="card-body">
+			<h5 class="card-title text-primary"><strong>@pizza.name</strong></h5>
+			<h6 class="card-subtitle mb-2 text-muted"><strong>pizza#@pizza.id</strong></h6>
+			<p class="card-text"><strong>Is gluten free? </strong>@(@pizza.isGlutenFree == true ? "Yes" : "No") </p>
+			<p class="card-text"><strong>Price:</strong> $@pizza.price</p>
+			<a href="@($"/pizzas/{pizza.id}/edit")" class="btn btn-primary m-1">EDIT</a>
+			<button @onclick="delete" type="button" class="btn btn-danger m-1">DELETE</button>
+			<AlertComponent @ref="alertComponent"></AlertComponent>
+		</div>
+	</div>
+
+</div>
+
+
+
+@code {
+	[Parameter]
+	public Pizza pizza { get; set; }
+	AlertComponent alertComponent;
+
+
+	public async void delete()
+	{
+		try
+		{
+			await PizzasScreenUseCases.deletePizza(pizza.id);
+			NavigationManager.NavigateTo($"/pizzas");
+		}
+		catch (Exception e)
+		{
+			alertComponent.ErrorMessage = e.Message.Trim('\"');
+			alertComponent.Show();
+		}
+	}
+
+}

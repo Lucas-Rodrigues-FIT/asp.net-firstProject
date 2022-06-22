@@ -1,0 +1,35 @@
+﻿@page "/pizzas/{pizzaId:int}"
+
+@inject IPizzasScreenUseCases PizzasScreenUseCases
+@inject NavigationManager NavigationManager
+
+<h3 class="text-center text-primary"><strong><a class="text-decoration-none" href="/pizzas">PIZZAS</a></strong></h3>
+@if (pizza != null)
+{
+	<PizzaShowComponent pizza="pizza"></PizzaShowComponent>
+}
+
+<div style=" display: @(display); justify-content:center;">
+	<h4>Error 404 - This pizza not found.</h4>
+</div>
+
+@code {
+	[Parameter]
+	public int pizzaId { get; set; }
+
+	Pizza pizza;
+	string display = "none";
+
+	protected override async Task OnParametersSetAsync()
+	{
+		try
+		{
+			pizza = await PizzasScreenUseCases.ViewPizzaById(pizzaId);
+		}
+		catch (Exception e)
+		{
+			display = "flex";
+		}
+	}
+
+}

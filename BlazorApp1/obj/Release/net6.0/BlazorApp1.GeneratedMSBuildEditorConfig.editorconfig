@@ -22,6 +22,14 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/saolucro/Documents/ws/ws-dotnet/WebApplication2/BlazorApp1/Controls/AlertComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQWxlcnRDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/saolucro/Documents/ws/ws-dotnet/WebApplication2/BlazorApp1/Controls/PizzaShowComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcUGl6emFTaG93Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/saolucro/Documents/ws/ws-dotnet/WebApplication2/BlazorApp1/Controls/PizzasShowComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcUGl6emFzU2hvd0NvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -46,12 +54,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJzQ29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/saolucro/Documents/ws/ws-dotnet/WebApplication2/BlazorApp1/Pages/PizzasComponent.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGl6emFzQ29tcG9uZW50LnJhem9y
+[C:/Users/saolucro/Documents/ws/ws-dotnet/WebApplication2/BlazorApp1/Pages/PizzaByIdComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGl6emFCeUlkQ29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/saolucro/Documents/ws/ws-dotnet/WebApplication2/BlazorApp1/Pages/PizzasSearchComponent.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGl6emFzU2VhcmNoQ29tcG9uZW50LnJhem9y
+[C:/Users/saolucro/Documents/ws/ws-dotnet/WebApplication2/BlazorApp1/Pages/PizzaCreateComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGl6emFDcmVhdGVDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/saolucro/Documents/ws/ws-dotnet/WebApplication2/BlazorApp1/Pages/PizzaEditComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGl6emFFZGl0Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/saolucro/Documents/ws/ws-dotnet/WebApplication2/BlazorApp1/Pages/PizzasComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGl6emFzQ29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/saolucro/Documents/ws/ws-dotnet/WebApplication2/BlazorApp1/Shared/SurveyPrompt.razor]

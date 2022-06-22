@@ -1,19 +1,44 @@
-﻿@page "/allpizzas"
+﻿@page "/pizzas"
 
 @inject IPizzasScreenUseCases PizzasScreenUseCases
 
-<h3>All Pizzas</h3>
+<h3 class="text-center text-primary"><strong>PIZZAS</strong></h3>
 <br />
-@if (pizzas != null)
-{	
-	<PizzasShowComponent pizzas="pizzas"></PizzasShowComponent>
-}
+<div class="row m-1 justify-content-center">
+	<div class="col-auto">
+		<input type="text" class="form-control" @bind-value="searchFilter" />
+	</div>
+	<div class="col-auto">
+		<button type="button" class="btn btn-primary" @onclick="searchPizzas">SEARCH</button>
+	</div>
+	<div class="col-auto">
+		<a href=@($"/pizzacreate") class="btn btn-success">CREATE A NEW PIZZA</a>
+	</div>
+</div>
+<br />
+
+<div style="display: flex; flex-direction:row; flex-wrap:wrap; justify-content:center">
+	@if (pizzas != null)
+	{
+		<PizzasShowComponent pizzas="pizzas"></PizzasShowComponent>
+	}
+
+	<PizzaCreateShowComponent></PizzaCreateShowComponent>
+
+</div>
 
 @code {
-	IEnumerable<Pizza>? pizzas;
 
-	protected override async Task OnInitializedAsync()
+	IEnumerable<Pizza> pizzas;
+	string searchFilter;
+
+	protected override async Task OnParametersSetAsync()
 	{
 		pizzas = await PizzasScreenUseCases.ViewPizzas();
+	}
+
+	private async Task searchPizzas()
+	{
+		pizzas = await PizzasScreenUseCases.SearchPizzas(searchFilter);
 	}
 }

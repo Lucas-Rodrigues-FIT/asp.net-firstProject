@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication2.Models;
 using WebApplication2.DataStore;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication2.Controllers
 {
@@ -41,25 +42,34 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public async Task<IActionResult> add(Pizza pizza)
         {
-            foreach(var pizza1 in db.pizzas.ToList())
+            foreach (var pizza1 in db.pizzas.ToList())
             {
-                if(pizza.name == pizza1.name)
-                {
-                    return BadRequest("This Pizza Name is already exits");
-                }
+                if (pizza.name == pizza1.name)
+                    return BadRequest("This Pizza Name is already exists.");
+
             }
-            pizza.id = db.pizzas.ToList().Count + 1;
+            pizza.id = db.pizzas.ToList().Max( p => p.id) + 1;
             await db.pizzas.AddAsync(pizza);
             await db.SaveChangesAsync();
-            return CreatedAtAction(nameof(add), new {id = pizza.id}, pizza);
+            return CreatedAtAction(nameof(add), new { id = pizza.id }, pizza);
         }
 
         //delete a pizza by id
         [HttpDelete("{id}")]
         public async Task<IActionResult> delete(int id)
         {
-            if(await db.pizzas.FindAsync(id) == null)
+            if (await db.pizzas.FindAsync(id) == null)
                 return NotFound();
+
+            List<Order> orders = await db.orders
+                .Include(item => item.orderItems)
+                .ThenInclude(pizza => pizza.pizza)
+                .ToListAsync();
+
+            foreach (Order order in orders)
+                foreach (OrderItem item in order.orderItems)
+                    if (item.pizzaId == id)
+                        return BadRequest("Exist orders with this pizza.");
             db.pizzas.Remove(db.pizzas.Find(id));
             await db.SaveChangesAsync();
             return NoContent();
@@ -74,22 +84,22 @@ namespace WebApplication2.Controllers
             Pizza newPizza = await db.pizzas.FindAsync(id);
             foreach (var pizza1 in db.pizzas.ToList())
             {
-                if (pizza.name == pizza1.name)
-                {
-                    return BadRequest("This Pizza Name is already exits");
-                }
+                if (pizza1.id != pizza.id)
+                    if (pizza.name == pizza1.name)
+                        return BadRequest("This Pizza Name is already exists.");
+
             }
             if (pizza.name != null)
                 newPizza.name = pizza.name;
             if (pizza.isGlutenFree != null)
                 newPizza.isGlutenFree = pizza.isGlutenFree;
-            if(pizza.price != null)
+            if (pizza.price != null)
                 newPizza.price = pizza.price;
 
             db.pizzas.Update(newPizza);
             await db.SaveChangesAsync();
             return NoContent();
-            
+
         }
 
     }

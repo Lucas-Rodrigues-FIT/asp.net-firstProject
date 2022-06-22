@@ -17,9 +17,9 @@ namespace WebApplication2.Repositories
             return await webApiExecuter.InvokeGet<IEnumerable<Pizza>>("api/pizzas");
         }
 
-        public async Task<IEnumerable<Pizza>> search(String filter)
+        public async Task<IEnumerable<Pizza>> get(string? filter)
         {
-            String uri = "api/pizzas?api-version=2.0";
+            string uri = "api/pizzas?api-version=2.0";
             if (!string.IsNullOrWhiteSpace(filter))
                 uri += $"&name={filter.Trim()}";
             return await webApiExecuter.InvokeGet<IEnumerable<Pizza>>(uri);
