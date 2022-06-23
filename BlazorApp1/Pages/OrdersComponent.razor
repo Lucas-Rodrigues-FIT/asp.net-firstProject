@@ -1,29 +1,60 @@
-﻿@page "/allorders"
+﻿@page "/orders"
 
 @inject IOrdersScreenUseCases OrdersScreenUseCases
+@inject NavigationManager NavigationManager
 
-<h3>All Orders</h3>
+<h3 class="text-center text-primary"><strong>ORDERS</strong></h3>
 <br />
-@if (orders != null)
-{
-	<ul>
-		@foreach (var order in orders)
-		{
-			<li>
-				<NavLink href="@($"/allorders/{@order.id}")">
-					Order #@order.id
-				</NavLink>
-			</li>
-		}
-	</ul>
+<div class="row m-1 justify-content-center">
+	<div class="col-auto">
+		<input type="text" class="form-control" @bind-value="orderId" />
+	</div>
+	<div class="col-auto">
+		<button type="button" class="btn btn-primary" @onclick="search">SEARCH</button>
+	</div>
+	<div class="col-auto">
+		<button @onclick="create" class="btn btn-success">CREATE A NEW ORDER</button>
+	</div>
+</div>
+<br />
 
-}
+<div style="display: flex; flex-direction:row; flex-wrap:wrap; justify-content:center">
+	@if (orders != null)
+	{
+		<OrdersShowComponent orders="orders"></OrdersShowComponent>
+	}
+	<AlertComponent @ref="alertComponent"></AlertComponent>
+</div>
 
 @code {
 	IEnumerable<Order>? orders;
+	public string orderId;
+	AlertComponent alertComponent;
 
 	protected override async Task OnInitializedAsync()
 	{
 		orders = await OrdersScreenUseCases.ViewOrders();
+	}
+
+	public async Task search()
+	{
+		try
+		{
+			orders = await OrdersScreenUseCases.SearchOrders(orderId);
+		}
+		catch (Exception e)
+		{
+			orders = null;
+			alertComponent.ErrorMessage = "Error 404 - Order not found";
+			alertComponent.Show();
+		}
+	}
+
+	public async Task create()
+	{
+		Order order = new Order();
+		order.orderItems = new List<OrderItem>();
+		order = await OrdersScreenUseCases.Create(order);
+		NavigationManager.NavigateTo($"/orders/{order.id}");
 	}
 }

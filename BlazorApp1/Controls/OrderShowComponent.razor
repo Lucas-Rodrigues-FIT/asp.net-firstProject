@@ -1,0 +1,70 @@
+﻿@inject IOrdersScreenUseCases OrdersScreenUseCases
+@inject NavigationManager NavigationManager
+
+<div style="display: flex; flex-direction:row; flex-wrap:wrap; justify-content:center">
+
+	<div class="card text-center " style="width:80vw;">
+		<div class="card-header">
+			<h4><strong>Order @order.id</strong></h4>
+		</div>
+		<div class="card-body">
+			<h5 class="card-title text-primary"><strong>ITEMS</strong></h5>
+
+			<div style="display: flex; flex-direction:row; flex-wrap:wrap; justify-content:center; width: 100%; margin-bottom: 2rem;">
+
+				@if (order.orderItems.Count > 0)
+				{
+					@foreach (OrderItem item in order.orderItems)
+					{
+						<div class="card m-1 border-primary text-center" style="width: 18rem;">
+							<div class="card-body">
+								<a class="text-decoration-none" href=@($"/pizzas/{@item.pizzaId}")><h5 class="card-title text-primary"><strong>@item.pizza.name</strong></h5></a>
+								<p class="card-text"><strong>Quantity: </strong>@item.quantity</p>
+								<p class="card-text"><strong>Sub Price: </strong>$@item.subPrice</p>
+							</div>
+							<a class="btn btn-primary" href=@($"/orders/{order.id}/items/{order.orderItems.IndexOf(item)+1}/edit")>EDIT</a>
+						</div>
+					}
+				}
+				else
+				{
+					<div class="alert alert-secondary fade show m-2" role="alert">
+						<strong>There are not items here. Do you want to add one?</strong>
+					</div>
+				}
+
+			</div>
+			<p><strong>Total Price: $@(order.totalPrice)</strong></p>
+
+			<AlertComponent></AlertComponent>
+			<a href=@($"/orders/{order.id}/itemadding") class="btn btn-success">ADD ITEM</a>
+			<button @onclick="delete" class="btn btn-danger">DELETE</button>
+		</div>
+	</div>
+
+
+
+</div>
+
+
+
+@code {
+	[Parameter]
+	public Order order { get; set; }
+	AlertComponent alertComponent;
+
+	public async void delete()
+	{
+		try
+		{
+			await OrdersScreenUseCases.delete(order.id);
+			NavigationManager.NavigateTo($"/orders");
+		}
+		catch (Exception e)
+		{
+			alertComponent.ErrorMessage = e.Message.Trim('\"');
+			alertComponent.Show();
+		}
+	}
+
+}

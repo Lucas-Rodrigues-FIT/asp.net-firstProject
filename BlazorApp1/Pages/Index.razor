@@ -1,15 +1,17 @@
 ﻿@page "/"
 
-<h3>Pizza Restaurant</h3>
-<br />
+<div class="text-center">
+	<h3>Pizza Restaurant</h3>
+	<br />
 
-<h4>Pizzas: </h4>
-<div style="display: flex; flex-direction:row">
-	<a class="btn btn-primary m-1" href="/pizzas" role="button">All Pizzas</a><br />
+	<div style="display: flex; flex-direction:row; justify-content:space-evenly;">
+		<a class="btn btn-primary btn-lg m-1" href="/pizzas" role="button">
+			<h4>Pizzas</h4>
+		</a>
+		<a class="btn btn-primary btn-lg m-1" href="/orders" role="button">
+			<h4>Orders</h4>
+		</a>
+	</div>
+
 </div>
 
-<br />
-<h4>Orders: </h4>
-<div style="display: flex; flex-direction:row">
-	<a class="btn btn-primary m-1" href="/allorders" role="button">All Orders</a>
-</div>

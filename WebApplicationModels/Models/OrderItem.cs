@@ -24,5 +24,15 @@ public class OrderItem
     public Order? order { get; set; }
     public int? orderId { get; set; }
 
+
+    public bool validatePizzaId()
+    {
+        return (this.pizzaId != null);
+    }
+
+    public bool validateQuantity()
+    {
+        return (this.quantity > 0);
+    }
 }
 

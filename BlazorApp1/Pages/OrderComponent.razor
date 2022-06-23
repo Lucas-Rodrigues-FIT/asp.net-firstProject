@@ -1,27 +1,15 @@
-﻿@page "/allorders/{id:int}"
+﻿@page "/orders/{id:int}"
 
 @inject IOrdersScreenUseCases OrdersScreenUseCases
 
-<h3>Order #@(id)</h3>
-<br />
+<h3 class="text-center text-primary"><strong><a class="text-decoration-none" href="/orders">ORDERS</a></strong></h3>
 @if (order != null)
 {
-	<ul>
-		@foreach (var item in order.orderItems)
-		{
-			<li>
-				<strong>Pizza:</strong> @item.pizza.name - <strong>Quantity: </strong> @item.quantity <br />
-				<strong>Sub Price: </strong> $@item.subPrice
-			</li>
-		}
-	</ul>
-	<strong>Total Price: </strong> @("$")
-
-	@order.totalPrice
+	<OrderShowComponent order="order"></OrderShowComponent>
 }
 else if (!isOrderExits)
 {
-	<span class="text-danger">THIS ORDER NOT EXITS!</span>
+	<h4>Error 404 - This order not found.</h4>
 }
 else
 {

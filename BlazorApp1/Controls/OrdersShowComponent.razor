@@ -1,0 +1,17 @@
+﻿
+@foreach (var order in orders)
+{
+	<div class="card m-1 border-primary" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title text-primary"><strong>Order @order.id</strong></h5>
+			<p class="card-text"><strong>Total items: </strong>@(order.orderItems.Count) </p>
+			<p class="card-text"><strong>Total Value: </strong>$@(order.totalPrice) </p>
+			<a href=@($"/orders/{@order.id}") class="btn btn-primary">Open</a>
+		</div>
+	</div>
+}
+
+@code {
+	[Parameter]
+	public IEnumerable<Order> orders { get; set; }
+}
